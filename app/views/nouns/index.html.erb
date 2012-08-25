@@ -1,0 +1,23 @@
+<h1>Listing nouns</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @nouns.each do |noun| %>
+  <tr>
+    <td><%= noun.name %></td>
+    <td><%= link_to 'Show', noun %></td>
+    <td><%= link_to 'Edit', edit_noun_path(noun) %></td>
+    <td><%= link_to 'Destroy', noun, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Noun', new_noun_path %>
