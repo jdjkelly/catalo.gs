@@ -6,7 +6,7 @@ Better::Application.routes.draw do
   resources :locations
   resources :answers
   resources :nouns do
-    resources :cities, :controller => 'nouns/cities'
+    resources :cities, :controller => 'nouns/cities', :only => [:index, :show]
   end
 
 end
