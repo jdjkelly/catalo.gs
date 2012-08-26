@@ -1,4 +1,9 @@
 class CitiesController < ApplicationController
+  # This could be more restrictive if City.all is a static list - or one that
+  # is controlled through the admin namespace. The current state will be 
+  # useful if users are allowed to contribute geographic data about locations
+  # vs. only being able to select from pre-existing content.
+
   # GET /cities
   # GET /cities.json
   def index

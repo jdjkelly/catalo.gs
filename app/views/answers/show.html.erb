@@ -1,5 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row">
+  <div class="span12">
+    <div class="row">
+      <div class="span8">
+        <h2>Answer</h2>
+        <%= @answer.body %>
+      </div>
+      <div class="span4">
+        <h3>Reputation</h3>
+        <%= @answer.reputation %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <h2>Location</h2>
+        <%= @answer.location.name %>
+        <%= @answer.location.description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <h2>Address</h2>
+        <%= @answer.location.address.city %>
+        <%= @answer.location.address.country %>
+        <%= @answer.location.address.state %>
+        <%= @answer.location.address.street_address %>
+        <%= @answer.location.address.zip_code %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>

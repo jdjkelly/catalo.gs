@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="span12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Body</th>
+          <th>Reputation</th>
+          <th>Location name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @answers.each do |answer| %>
+          <tr>
+            <td><%= answer.id %></td>
+            <td><%= answer.body %></td>
+            <td><%= answer.reputation %></td>
+            <td><%= answer.location.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

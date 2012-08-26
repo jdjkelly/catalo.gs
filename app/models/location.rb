@@ -9,5 +9,7 @@ class Location
   embeds_one :address
 
   belongs_to :city
+  
+  has_many :answers
 
 end

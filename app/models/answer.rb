@@ -8,7 +8,6 @@ class Answer
 
   belongs_to :noun
   belongs_to :city
-  
-  has_one :location
+  belongs_to :location
 
 end

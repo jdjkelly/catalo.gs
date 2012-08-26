@@ -5,3 +5,6 @@ Making it easy to find the best place for everything.
 == Goals
 
 1. Provide opinionated answers to questions in the form of "Where's the best place to buy _______ in (city)?"
+
+2. Extremely high quality of submitted content through moderation and a reputation economy (Stack Overflow). 
+
