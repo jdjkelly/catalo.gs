@@ -41,11 +41,41 @@ locations = [
   "Off 5th Saks Fifth Avenue Outlet",
   "Sears",
   "Sears Essentials",
-  "Von Maur"
+  "Von Maur",
+  "Dark Horse Coffee"
 ]
 
 locations.each do |location|
   City.all.each do |city|
-      Location.create(city: city, name: location, description: Faker::Lorem.paragraph(10)).create_address(city: city, country: Faker::Address.country)
+    Location.create(city: city, name: location, description: Faker::Lorem.paragraph(10))
+    Location.last.create_address(city: city, country: Faker::Address.country)
+    Location.last.location_images.push(LocationImage.new(path: "locations/dark-horse-coffee.jpg", type: "featured"))
   end
+end
+
+nouns = [
+  "Headphones",
+  "Manscapping tools",
+  "Hardware",
+  "Sports equipment",
+  "Guitars",
+  "Jeans",
+  "Roasted coffee"
+]
+
+nouns.each do |noun|
+  Noun.create(name: noun, description: Faker::Lorem.paragraph(10))
+end
+
+Noun.all.each do |noun|
+  City.all.each do |city|
+    noun.cities.push(city)
+  end
+end
+
+5.times do
+  answer = Answer.create(body: Faker::Lorem.paragraph(20), reputation: rand(25))
+  Noun.each {|noun| noun.answers.push(answer)}
+  City.each {|city| city.answers.push(answer)}
+  Location.each {|location| location.answers.push(answer)}
 end

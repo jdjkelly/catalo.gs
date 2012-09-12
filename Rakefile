@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Better::Application.load_tasks
+Catalogs::Application.load_tasks

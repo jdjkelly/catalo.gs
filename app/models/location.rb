@@ -7,6 +7,7 @@ class Location
   field :description, type: String
 
   embeds_one :address
+  embeds_many :location_images
 
   belongs_to :city
   

@@ -1,0 +1,28 @@
+<header class="page-header">
+  <div class="row">
+    <h1 class="span4">
+      <a href="/">
+        Catalo.gs
+      </a>
+    </h1>
+    <div class="span4 offset4 city">
+
+      <% if session[:city] %>
+        <h3>
+          <span class="map-pin"></span>
+          <%= session[:city] %>
+          <%= link_to "change", "/" %>
+        </h3>
+
+      <% else %>
+        <%= form_for :city do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        
+          <%= f.submit %>
+        <% end %> 
+      <% end %>
+
+    </div>
+  </div>
+</header>

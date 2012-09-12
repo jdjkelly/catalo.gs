@@ -1,10 +1,28 @@
-== Better.
+== Catalo.gs
 
 Making it easy to find the best place for everything.
 
-== Goals
+== Project Goals
 
 1. Provide opinionated answers to questions in the form of "Where's the best place to buy _______ in (city)?"
 
 2. Extremely high quality of submitted content through moderation and a reputation economy (Stack Overflow). 
 
+== Critical Paths
+
+-> /  
+  -> /search/:query
+    -> has exact matches
+      -> /nouns/:noun_id/cities/:id
+        -> /locations/:id
+    -> has noun matches
+      -> /nouns/:noun_id
+        -> /nouns/:noun_id/cities/:id
+          -> /locations/:id
+
+== Path Goals
+
+-> /
+  1. Search (noun and city)
+  2. Set city (geo api and manually)
+  3. 

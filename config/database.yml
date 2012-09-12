@@ -2,7 +2,7 @@ defaults: &defaults
   adapter: sqlite
 
 development:
-  database: db/better_development.db
+  database: db/catalogs_development.db
   <<: *defaults
 
   # Add more repositories
@@ -17,8 +17,8 @@ development:
   #     ...
 
 test:
-  database: db/better_test.db
+  database: db/catalogs_test.db
   <<: *defaults
 production:
-  database: db/better_production.db
+  database: db/catalogs_production.db
   <<: *defaults

@@ -1,4 +1,13 @@
-<form class="form-search">
-  <input type="text" class="input-medium search-query">
-  <button type="submit" class="btn">Search</button>
-</form>
+<%= form_tag "/search", method: "get", class: "form-search", autocomplete: "off" do %>
+  <%= text_field_tag "noun", @noun.name %>
+    in
+  <%= text_field_tag "city", session[:city] %>
+  <br/>
+  <button type="submit" class="btn btn-large">
+    Search
+  </button>
+<% end %>
+
+<div class="home-background">
+  <%= image_tag @featured_image.path %>
+</div>

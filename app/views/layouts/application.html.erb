@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Better</title>
+  <title>Catalo.gs</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container">
-    <header class="page-header">
-      <h1>Better.</h1>
-    </header>
+
+    <%= render "layouts/header" %>
+
     <%= yield %>
+
+    <footer class="page-footer">
+      
+    </footer>
+
   </div>
 </body>
 </html>
