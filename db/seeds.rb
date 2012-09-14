@@ -1,3 +1,7 @@
+puts 'EMPTY THE MONGODB DATABASE, MR. WORF'
+Mongoid.purge!
+
+puts 'ADD CITIES, MR. WORF'
 cities = [
   "New York",
   "Los Angele",
@@ -17,7 +21,9 @@ city_images = [
 cities.each do |city|
   City.create(name: city, latitude: rand(-100.0..100.0), longitude: rand(-100.0..100), image_path: city_images.sample)
 end
+puts 'CITIES ADDED, SIR'
 
+puts 'ADD LOCATIONS, MR. WORF'
 locations = [
   "Barneys New York",
   "Belk",
@@ -63,7 +69,9 @@ locations.each do |location|
     Location.last.location_images.push(LocationImage.new(path: image_paths.sample, type: "featured"))
   end
 end
+puts 'LOCATIONS ADDED, SIR'
 
+puts 'ADD NOUNS, MR. WORF'
 nouns = [
   "Headphones",
   "Manscapping tools",
@@ -83,10 +91,30 @@ Noun.all.each do |noun|
     noun.cities.push(city)
   end
 end
+puts 'NOUNS ADDED, SIR'
 
+
+puts 'FAKE SOME ANSWERS, MR. WORF'
 5.times do
-  answer = Answer.create(body: Faker::Lorem.paragraph(20), reputation: rand(25))
-  Noun.each {|noun| noun.answers.push(answer)}
-  City.each {|city| city.answers.push(answer)}
-  Location.each {|location| location.answers.push(answer)}
+
+  Noun.each do |noun| 
+    City.each do |city|
+      answer = Answer.create(body: Faker::Lorem.paragraph(20), reputation: rand(25))
+
+      noun.answers.push(answer)
+      city.answers.push(answer)
+    end
+  end
+
+  Answer.each do |answer|
+    Location.offset(rand(Location.count)).first.answers.push(answer)
+  end
+
 end
+puts 'ANSWERS FAKED, SIR'
+
+puts 'SETTING UP DEFAULT USER LOGIN, MR. WORF'
+user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
+puts 'USER CREATED SIR: ' << user.name
+
+puts '.... Engage'

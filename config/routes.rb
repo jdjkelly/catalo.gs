@@ -10,4 +10,6 @@ Catalogs::Application.routes.draw do
     resources :cities, :controller => 'nouns/cities', :only => [:index, :show]
   end
 
+  devise_for :users
+
 end

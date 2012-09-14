@@ -9,9 +9,10 @@ gem 'activeresource', RAILS_VERSION, :require => 'active_resource'
 gem 'railties',       RAILS_VERSION, :require => 'rails'
 gem 'tzinfo',         '~> 0.3.32'
 
-gem 'mongoid', "~> 3.0.0"
+gem 'devise'
 gem 'faker'
 gem 'foreman'
+gem 'mongoid', "~> 3.0.0"
 
 # Gems used only for assets and not required
 # in production environments by default.

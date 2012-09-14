@@ -9,5 +9,6 @@ class Answer
   belongs_to :noun
   belongs_to :city
   belongs_to :location
+  belongs_to :user
 
 end
