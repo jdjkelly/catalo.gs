@@ -6,6 +6,7 @@ class City
   field :name, type: String
   field :latitude, type: Float
   field :longitude, type: Float
+  field :image_path, type: String
 
   has_many :answers
   has_many :locations

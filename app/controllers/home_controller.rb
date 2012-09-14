@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     session[:city] = "Toronto"
     
     @noun = Noun.offset(rand(Noun.count)).first
-    @location = Location.last
+    @location = Location.offset(rand(Location.count)).first
     @featured_image = @location.location_images.where(type: "featured").first
   end
 

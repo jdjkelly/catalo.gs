@@ -10,8 +10,12 @@ cities = [
   "Dallas"
 ]
 
+city_images = [
+  "cities/new-york.jpg"
+]
+
 cities.each do |city|
-  City.create(name: city, latitude: rand(-100.0..100.0), longitude: rand(-100.0..100))
+  City.create(name: city, latitude: rand(-100.0..100.0), longitude: rand(-100.0..100), image_path: city_images.sample)
 end
 
 locations = [
@@ -45,11 +49,18 @@ locations = [
   "Dark Horse Coffee"
 ]
 
+image_paths = [
+  "locations/crema.jpg",
+  "locations/dark-horse-coffee.jpg",
+  "locations/embelished.jpg",
+  "locations/skateshop.jpg"
+]
+
 locations.each do |location|
   City.all.each do |city|
     Location.create(city: city, name: location, description: Faker::Lorem.paragraph(10))
     Location.last.create_address(city: city, country: Faker::Address.country)
-    Location.last.location_images.push(LocationImage.new(path: "locations/dark-horse-coffee.jpg", type: "featured"))
+    Location.last.location_images.push(LocationImage.new(path: image_paths.sample, type: "featured"))
   end
 end
 

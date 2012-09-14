@@ -13,7 +13,9 @@ class Nouns::CitiesController < ApplicationController
   # GET /nouns/1/cities/1
   # GET /nouns/1/cities/1.json
   def show
-    @answers = Answer.where(city: params[:id], noun: params[:noun_id])
+    @answers = Answer.where(city: params[:id], noun: params[:noun_id]).sort(reputation: -1)
+    @noun = Noun.find(params[:noun_id])
+    @city = City.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

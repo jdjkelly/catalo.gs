@@ -1,9 +1,11 @@
+@import compass/css3
+
 .form-search
   color: white
   font-size: 36px
   font-weight: bold
-  float: right
-
+  float: left
+  margin-top: 30px
 
   input 
     border: none
@@ -11,36 +13,50 @@
     border-radius: 0px
     box-shadow: none
     color: #000
+    float: left
     font-size: 36px
     font-weight: bold
     height: auto
-    margin: 100px 0 0 0
+    margin: 20px 0 0 0
     min-width: 100px
     opacity: 0.9
     padding: 15px
     transition: width 100ms linear
     vertical-align: 0px
+    +single-box-shadow
 
     &:focus
       box-shadow: none
 
+  .in 
+    float: left
+    height: 53px
+    margin: 47px 15px 0 15px
+    +text-shadow(0 0 5px #000)
+
   button
-    background: transparent
+    background: rgba(255,255,255,0.9)
     border-width: 5px
-    border-color: #fff
+    border-color: #000
     border-radius: 0px
-    color: white
+    color: #000
     display: block
     font-weight: bold
-    float: right
+    float: left
     letter-spacing: 1px
-    margin: 20px 10px 20px 0px
-    padding: 20px
+    margin: 20px 10px 20px 30px
+    padding: 25px
     text-transform: uppercase
+    +single-box-shadow
+    +transition-property(all)
+    +transition-duration(0.25s)
+    +transition-timing-function(ease-in)
 
     &:hover
-      color: #000
-      background: #fff
+      +transition-property(all)
+      +transition-duration(0.25s)
+      +transition-timing-function(ease-in)
+      border-color: rgba(82, 168, 236, 0.8)
 
 .home-background
   left: 0
