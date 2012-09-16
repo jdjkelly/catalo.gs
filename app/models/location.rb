@@ -12,5 +12,7 @@ class Location
   belongs_to :city
   
   has_many :answers
+  
+  has_and_belongs_to_many :nouns
 
 end

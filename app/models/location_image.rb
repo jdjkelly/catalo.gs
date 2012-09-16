@@ -8,7 +8,7 @@ class LocationImage
 
   embedded_in :location
 
-  TYPES = %w(featured)
+  TYPES = %w(featured avatar)
   validates_inclusion_of :type, in: TYPES
 
 end

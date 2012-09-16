@@ -22,10 +22,10 @@ class User
 
   ## Trackable
   field :sign_in_count,      :type => Integer, :default => 0
-  field :current_sign_in_at, :type => Time
   field :last_sign_in_at,    :type => Time
-  field :current_sign_in_ip, :type => String
-  field :last_sign_in_ip,    :type => String
+  # field :current_sign_in_at, :type => Time
+  # field :current_sign_in_ip, :type => String
+  # field :last_sign_in_ip,    :type => String
 
   ## Confirmable
   # field :confirmation_token,   :type => String
@@ -49,4 +49,6 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   has_many :answers
+
+  embeds_one :avatar
 end

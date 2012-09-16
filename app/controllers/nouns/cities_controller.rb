@@ -14,6 +14,7 @@ class Nouns::CitiesController < ApplicationController
   # GET /nouns/1/cities/1.json
   def show
     @answers = Answer.where(city: params[:id], noun: params[:noun_id]).sort(reputation: -1)
+    @count = @answers.count
     @noun = Noun.find(params[:noun_id])
     @city = City.find(params[:id])
 

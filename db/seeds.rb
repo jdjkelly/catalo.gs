@@ -23,6 +23,30 @@ cities.each do |city|
 end
 puts 'CITIES ADDED, SIR'
 
+
+
+puts 'ADD NOUNS, MR. WORF'
+nouns = [
+  "Headphones",
+  "Manscapping tools",
+  "Hardware",
+  "Sports equipment",
+  "Guitars",
+  "Jeans",
+  "Roasted coffee"
+]
+
+nouns.each do |noun|
+  Noun.create(name: noun, description: Faker::Lorem.paragraph(10))
+end
+
+Noun.all.each do |noun|
+  City.all.each do |city|
+    noun.cities.push(city)
+  end
+end
+puts 'NOUNS ADDED, SIR'
+
 puts 'ADD LOCATIONS, MR. WORF'
 locations = [
   "Barneys New York",
@@ -65,44 +89,33 @@ image_paths = [
 locations.each do |location|
   City.all.each do |city|
     Location.create(city: city, name: location, description: Faker::Lorem.paragraph(10))
-    Location.last.create_address(city: city, country: Faker::Address.country)
+    Location.last.create_address(city: city.name, country: Faker::Address.country, state: Faker::Address.state, street_address: Faker::Address.street_address)
     Location.last.location_images.push(LocationImage.new(path: image_paths.sample, type: "featured"))
+    1..3.times do
+      Location.last.nouns.push(Noun.offset(rand(Noun.count)).first)
+    end
   end
 end
 puts 'LOCATIONS ADDED, SIR'
 
-puts 'ADD NOUNS, MR. WORF'
-nouns = [
-  "Headphones",
-  "Manscapping tools",
-  "Hardware",
-  "Sports equipment",
-  "Guitars",
-  "Jeans",
-  "Roasted coffee"
-]
-
-nouns.each do |noun|
-  Noun.create(name: noun, description: Faker::Lorem.paragraph(10))
-end
-
-Noun.all.each do |noun|
-  City.all.each do |city|
-    noun.cities.push(city)
-  end
-end
-puts 'NOUNS ADDED, SIR'
-
+puts 'SETTING UP DEFAULT USER LOGIN, MR. WORF'
+user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
+user.create_avatar(path: "users/josh.jpeg")
+puts 'USER CREATED SIR: ' << user.name
 
 puts 'FAKE SOME ANSWERS, MR. WORF'
+
 5.times do
+
+  user = User.first
 
   Noun.each do |noun| 
     City.each do |city|
-      answer = Answer.create(body: Faker::Lorem.paragraph(20), reputation: rand(25))
+      answer = Answer.create(body: Faker::Lorem.paragraph(3), reputation: rand(25))
 
       noun.answers.push(answer)
       city.answers.push(answer)
+      user.answers.push(answer)
     end
   end
 
@@ -112,9 +125,5 @@ puts 'FAKE SOME ANSWERS, MR. WORF'
 
 end
 puts 'ANSWERS FAKED, SIR'
-
-puts 'SETTING UP DEFAULT USER LOGIN, MR. WORF'
-user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
-puts 'USER CREATED SIR: ' << user.name
 
 puts '.... Engage'

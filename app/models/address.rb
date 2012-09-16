@@ -11,4 +11,8 @@ class Address
 
   embedded_in :location
 
+  def short
+    "#{street_address}, #{city}"
+  end
+
 end
