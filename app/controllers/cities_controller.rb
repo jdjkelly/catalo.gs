@@ -4,6 +4,10 @@ class CitiesController < ApplicationController
   # useful if users are allowed to contribute geographic data about locations
   # vs. only being able to select from pre-existing content.
 
+  # Later thoughts on the above: it may be more convenient to rely on Foursquare
+  # as the sole source of location data. At least initially. I could store all 
+  # data after the initial request to mitigate some risk.
+
   # GET /cities
   # GET /cities.json
   def index

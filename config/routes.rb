@@ -9,7 +9,7 @@ Catalogs::Application.routes.draw do
     resources :cities, :controller => 'nouns/cities', :only => [:index, :show]
   end
   resources :search
-  resources :users
+  resources :users, :only => 'show'
 
   devise_for :users
 
