@@ -1,14 +1,23 @@
 class Answer
-
+  include Geolib
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Max::Denormalize
+  include Mongo::Voteable
 
   field :body, type: String
   field :reputation, type: Integer
 
   belongs_to :noun
-  belongs_to :city
   belongs_to :location
   belongs_to :user
+
+  voteable self, up: +1, down: -1
+
+  denormalize :location, :coordinates
+
+  index({ location_coordinates: "2d" }, { min: -180, max: 180 })
+
+  alias :coordinates :location_coordinates
 
 end

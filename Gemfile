@@ -12,7 +12,9 @@ gem 'tzinfo',         '~> 0.3.32'
 gem 'devise'
 gem 'faker'
 gem 'foreman'
+gem 'geocoder'
 gem 'mongoid', '~> 3.0.5'
+gem 'mongoid_max_denormalize'
 gem 'voteable_mongo', :github => 'CrowdHall/voteable_mongo'
 
 # Gems used only for assets and not required

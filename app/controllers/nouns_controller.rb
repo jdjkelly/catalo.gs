@@ -13,11 +13,22 @@ class NounsController < ApplicationController
   # GET /nouns/1
   # GET /nouns/1.json
   def show
+    @answers = Answer.where(noun: params[:id])
+                     .near(location_coordinates: coordinates)
+                     .max_distance(location_coordinates: 1)
+                     .sort(reputation: -1)
+    
+    @count = @answers.count
     @noun = Noun.find(params[:id])
+    
+    @locations = {}
+    @answers.each do |answer|
+      @locations[answer.location.id] = [answer.location.latitude, answer.location.longitude]
+    end
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @noun }
+      format.json { render json: @answers }
     end
   end
 
@@ -80,4 +91,5 @@ class NounsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

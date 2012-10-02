@@ -1,2 +1,2 @@
 web:    rails s -p3001
-mongo:  mongod
+mongo:  mongod run --config /usr/local/etc/mongod.conf

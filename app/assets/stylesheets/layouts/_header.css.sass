@@ -1,19 +1,44 @@
-.city 
-  h3
-    text-align: right
+.page-header
+  margin: 20px 0 0
+  border-bottom: none
+
+  h1 
+    margin-top: 0
+    margin-bottom: 0
+
     a 
-      font-size: 16px 
+      background: image-url("sprite.png") 
+      background-position: -30px 0px
+      display: block
+      height: 70px
+      text-indent: -9999px
+      width: 183px
 
-.map-pin 
-  background: image-url("sprite.png")
-  background-position: 0px 0px
-  width: 15px
-  height: 21px
-  display: inline-block
+      &:hover 
+        background-position: -213px 0px
+        text-decoration: none
 
-h1 
-  a 
-    color: #333
+.login
+  h4 
+    text-align: right
+    margin-top: 35px
 
-    &:hover 
-      text-decoration: none
+    .icon-user
+      margin-top: 5px
+
+.interior 
+  border-top: 1px solid black
+  border-bottom: 1px solid black
+  height: 80px
+  width: 100%
+
+  &.affix 
+    background: white
+    top: 0
+    z-index: 9999
+
+  &.content-below
+    margin-bottom: 35px
+
+  h1
+    padding: 10px 0

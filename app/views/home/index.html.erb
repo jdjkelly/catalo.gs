@@ -1,13 +1,20 @@
-<%= form_tag "/search", method: "get", class: "form-search", autocomplete: "off" do %>
-  <%= text_field_tag "noun", @noun.name %>
-    <span class="in">in</span>
-  <%= text_field_tag "city", session[:city] %>
-
-  <button type="submit" class="btn btn-large">
-    Search
-  </button>
-<% end %>
-
 <div class="home-background">
-  <%= image_tag @featured_image.path %>
+  <div id="map"></div>
 </div>
+
+<div class="row">
+  <div class="span12 home-search">
+    <%= form_tag "/search", method: "get", class: "form-search", autocomplete: "off" do %>
+      <%= text_field_tag "noun", @noun.name %>
+      <button type="submit" class="btn btn-large">
+        Search
+      </button>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :javascripts do %>
+  $(function() {
+    Better.map.setView(new L.LatLng(<%= latitude %>, <%= longitude %>), 14, true);
+  })
+<% end %>

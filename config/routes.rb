@@ -2,15 +2,14 @@ Catalogs::Application.routes.draw do
 
   root :to => 'home#index'
 
-  resources :answers
-  resources :cities
-  resources :locations
-  resources :nouns do
-    resources :cities, :controller => 'nouns/cities', :only => [:index, :show]
+  devise_for :users
+
+  resources :answers do
+    resource :vote, :only => ['create', 'destroy'], :controller => 'answers/vote'
   end
+  resources :locations
+  resources :nouns
   resources :search
   resources :users, :only => 'show'
-
-  devise_for :users
 
 end

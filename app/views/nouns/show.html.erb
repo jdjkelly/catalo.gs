@@ -1,18 +1,19 @@
-<div class="row">
-  <div class="span8">
-    <h2><%= @noun.name %></h2>
+<%= render "map" %>
 
-    <p><%= @noun.description %></p>
-    
-  </div>
-  <div class="span4">
-    <div class="well well-small">
-      <ul class="nav nav-list">
-        <li class="nav-header">Cities</li>
-        <% @noun.cities.each do |city| %>
-          <li><%= link_to city.name, noun_city_path(@noun, city) %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
+<%= render "answers" %>
+
+<% content_for :javascripts do %>
+  $(function() {
+    Better.map.setView(new L.LatLng(<%= latitude %>, <%= longitude %>), 12, true);
+
+    Better.map.locations = <%= @locations.to_json.html_safe %>;
+
+    Better.map.markers = (function() {
+      <% @answers.each do |answer| %>
+        L.marker([<%= answer.latitude %>, <%= answer.longitude %>], {title: "test"} ).addTo(Better.map);
+      <% end %>
+    })();
+  })
+  
+<% end %>
+

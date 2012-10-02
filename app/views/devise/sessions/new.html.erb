@@ -1,17 +1,57 @@
-<h2>Sign in</h2>
+</div>
+<div class="interior content-below">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1>Login <small>or <%= link_to "sign up", new_user_registration_path %></small></h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<div class="container">
+  <% if resource.errors.any? %>
+    <div class="row">
+      <div class="span12">
+        <div class="alert alert-error">
+          <%= devise_error_messages! %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div class="row">
+    <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "span12 form-horizontal"} do |f| %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+      <div class="control-group">
+        <%= f.label :email, class: "control-label" %>
+        <div class="controls">
+          <%= f.email_field :email, class: "span4" %>
+        </div>
+      </div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+      <div class="control-group">
+        <%= f.label :password, class: "control-label", for: "user_password" %>
 
-<%= render "devise/shared/links" %>
+        <div class="controls">
+          <%= f.password_field :password, class: "span4" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="control-group hidden">
+          <div class="controls">
+            <%= f.label :remember_me %>
+            <%= f.check_box :remember_me, checked: true %> 
+          </div>
+        </div>
+      <% end -%>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Login", class: "btn btn-primary btn-large" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>

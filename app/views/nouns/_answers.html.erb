@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="span8">
+    <% @answers.each_with_index do |answer, index| %>
+      <div class="noun-city-answer">
+        <div class="row">
+          <div class="span1">
+            <h4 class="reputation"><%= answer.reputation %></h4>
+            <%= link_to answer_vote_path(answer), :method => :post do %>
+              <i class="icon-large icon-circle-arrow-up"></i>
+            <% end %>
+            
+            <i class="icon-large icon-circle-arrow-down"></i>
+          </div>
+          <div class="span7">
+
+            <div class="row">
+              <div class="span7">
+                <h4 class="name"><%= link_to answer.location.name, answer.location %></h4>
+                <h4 class="address"><i class="icon-map-marker"></i><small><%= answer.location.address %></small></h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="span7">
+                <blockquote>
+                  <p><%= answer.body %></p>
+                  <small>Suggested by <cite title="Source Title"><%= link_to answer.user.name, user_path(answer.user) %></cite></small>
+                </blockquote>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="span7">
+                <dl>
+                  <dt>Also known for</dt>
+                  <dd>
+                    <%= raw answer.location.nouns.collect { |noun| link_to noun.name, noun if noun != @noun }.compact.join(", ") %>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

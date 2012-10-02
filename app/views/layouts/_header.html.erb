@@ -5,24 +5,20 @@
         Catalo.gs
       </a>
     </h1>
-    <div class="span4 offset4 city">
 
-      <% if session[:city] %>
-        <h3>
-          <span class="map-pin"></span>
-          <%= session[:city] %>
-          <%= link_to "change", "/" %>
-        </h3>
-
+    <div class="span4 offset4 login">
+      <% if user_signed_in? %>
+        <h4>
+          <i class="icon-user"></i>
+          <%= current_user.email %>
+          <%= link_to "logout", destroy_user_session_path %>
+        </h4>
       <% else %>
-        <%= form_for :city do |f| %>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        
-          <%= f.submit %>
-        <% end %> 
+        <h4>
+          <i class="icon-user"></i>
+          <%= link_to "Login", new_user_session_path %>
+        </h4>
       <% end %>
-
     </div>
   </div>
 </header>

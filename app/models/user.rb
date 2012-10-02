@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Mongo::Voter
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -8,10 +10,7 @@ class User
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
-  field :encrypted_password, :type => String, :default => ""
-
-  validates_presence_of :email
-  validates_presence_of :encrypted_password
+  field :encrypted_password, :type => String
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -23,9 +22,9 @@ class User
   ## Trackable
   field :sign_in_count,      :type => Integer, :default => 0
   field :last_sign_in_at,    :type => Time
-  # field :current_sign_in_at, :type => Time
-  # field :current_sign_in_ip, :type => String
-  # field :last_sign_in_ip,    :type => String
+  field :current_sign_in_at, :type => Time
+  field :current_sign_in_ip, :type => String
+  field :last_sign_in_ip,    :type => String
 
   ## Confirmable
   # field :confirmation_token,   :type => String

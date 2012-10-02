@@ -1,14 +1,4 @@
 class AnswersController < ApplicationController
-  # GET /answers
-  # GET /answers.json
-  def index
-    @answers = Answer.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @answers }
-    end
-  end
 
   # GET /answers/1
   # GET /answers/1.json
@@ -80,4 +70,5 @@ class AnswersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

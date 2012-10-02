@@ -13,7 +13,7 @@
     border-radius: 0px
     box-shadow: none
     color: #000
-    float: left
+    display: block
     font-size: 36px
     font-weight: bold
     height: auto
@@ -28,23 +28,16 @@
     &:focus
       box-shadow: none
 
-  .in 
-    float: left
-    height: 53px
-    margin: 47px 15px 0 15px
-    +text-shadow(0 0 5px #000)
-
   button
     background: rgba(255,255,255,0.9)
     border-width: 5px
     border-color: #000
     border-radius: 0px
     color: #000
-    display: block
     font-weight: bold
     float: left
     letter-spacing: 1px
-    margin: 20px 10px 20px 30px
+    margin: 20px 10px 20px 0
     padding: 25px
     text-transform: uppercase
     +single-box-shadow
@@ -64,6 +57,12 @@
   width: 100%
   z-index: -1
 
-  img
+  #map
+    border-bottom: 1px solid black
+    border-top: 1px solid black
+    height: 450px
     position: fixed
     width: 100%
+
+.home-search
+  height: 450px

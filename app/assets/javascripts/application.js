@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-autogrow
+//= require leaflet.js
 //= require_tree .
+
+Better = {};
