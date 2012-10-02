@@ -61,7 +61,7 @@ puts 'FAKE SOME ANSWERS, MR. WORF'
   user = User.first
 
   Noun.each do |noun| 
-    answer = Answer.create(body: Faker::Lorem.paragraph(3), reputation: rand(25))
+    answer = Answer.create(body: Faker::Lorem.paragraph(3))
 
     noun.answers.push(answer)
     user.answers.push(answer)

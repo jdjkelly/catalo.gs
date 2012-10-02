@@ -4,8 +4,8 @@
       <div class="noun-city-answer">
         <div class="row">
           <div class="span1">
-            <h4 class="reputation"><%= answer.reputation %></h4>
-            <%= link_to answer_vote_path(answer), :method => :post do %>
+            <h4 class="reputation"><%= answer.votes_point %></h4>
+            <%= link_to answer_vote_path(answer, :vote => "up"), :method => :post do %>
               <i class="icon-large icon-circle-arrow-up"></i>
             <% end %>
             
