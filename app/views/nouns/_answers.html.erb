@@ -5,11 +5,15 @@
         <div class="row">
           <div class="span1">
             <h4 class="reputation"><%= answer.votes_point %></h4>
-            <%= link_to answer_vote_path(answer, :vote => "up"), :method => :post do %>
-              <i class="icon-large icon-circle-arrow-up"></i>
+            <% if user_signed_in?  %>
+              <%= link_to answer_vote_path(answer, :vote => "up"), :remote => true, :class => "vote upvote", :method => :post do %>
+                <i class="icon-large icon-circle-arrow-up"></i>
+              <% end %>
+
+              <%= link_to answer_vote_path(answer, :vote => "down"), :remote => true, :class => "vote downvote", :method => :post do %>
+                <i class="icon-large icon-circle-arrow-down"></i>
+              <% end %>
             <% end %>
-            
-            <i class="icon-large icon-circle-arrow-down"></i>
           </div>
           <div class="span7">
 

@@ -16,3 +16,6 @@ $ ->
   $(".icon-circle-arrow-down").hover ->
     $(this).toggleClass "icon-circle-arrow-down"
     $(this).toggleClass "icon-download"
+
+  $(".upvote, .downvote").bind "ajax:success", (event, data) ->
+    $(this).siblings("h4").html(data)

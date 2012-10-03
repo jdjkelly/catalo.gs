@@ -1,5 +1,7 @@
 class Answers::VoteController < ApplicationController
 
+  before_filter :authenticate_user!
+
   # POST /answers/1/vote.json
   def create
     @answer = Answer.find (params[:answer_id])
@@ -7,7 +9,7 @@ class Answers::VoteController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.json { render json: @vote, status: :created }
+        format.json { render json: @answer.votes_point, status: :created }
       else
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
